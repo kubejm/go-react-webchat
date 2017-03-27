@@ -27,7 +27,7 @@ func main() {
 	var entry string
 	var port string
 
-	flag.StringVar(&dir, "dir", "./client/build/static", "the directory to serve files from. Defaults to the current dir")
+	flag.StringVar(&dir, "dir", "./client/build/static", "the directory to serve files from")
 	flag.StringVar(&entry, "entry", "./client/build/index.html", "the entrypoint to serve")
 	flag.StringVar(&port, "port", "8080", "the port to listen on")
 	flag.Parse()
@@ -65,7 +65,6 @@ func handleConnections(w http.ResponseWriter, r *http.Request) {
 	}
 
 	defer ws.Close()
-
 	clients[ws] = true
 
 	for {
